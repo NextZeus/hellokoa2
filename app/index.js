@@ -21,21 +21,16 @@ co(function *(){
   // var models = require("./models/index");
   // yield models.init(router);
 
-  function main(ctx,next){
+  function  main(ctx,next){
     ctx.body = "hello world!";
     next();
   }
 
   function* init(router){
-    router
-    .get('/', main)
-    .get('/list',function(ctx, next){
-      ctx.body = {list:[]};
-      next();
-    })
+      router.get('/', main);
   } 
 
-  yield init(router)
+  yield init(router);
 
   app.use(router.routes());
   
