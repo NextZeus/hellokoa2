@@ -6,7 +6,10 @@ var json = require("koa-json");
 var onerror = require("koa-onerror");
 var bodyparser = require("koa-bodyparser");
 var logger = require("koa-logger");
-
+var mongoose = require("mongoose");
+mongoose.Promise = global.Promise;
+mongoose.connect('mongodb://localhost:27017/hellokoa2');
+// mongoose.set('debug', true);
 onerror(app);
 
 app.use(bodyparser({
@@ -21,15 +24,9 @@ app.use(views(__dirname+'/views',{
     extension:'{views}'
 }));
 
-app.use(async (ctx,next)=>{
-    const start = new Date();
-    await next();
-    const ms = new Date() - start;
-    console.log(`${ctx.method} ${ctx.url} - ${ms}ms`);
-});
-
 var index = require("./routes/index");
 
 app.use(index.routes(),index.allowedMethods());
+
 
 module.exports = app;

@@ -5,7 +5,6 @@ var debug = require('debug')('demo:server');
 var http = require("http");
 
 var port = normalizePort(process.env.PORT || '3000');
-app.set('port',port);
 
 var server = http.createServer(app.callback());
 server.listen(port);
@@ -14,7 +13,7 @@ server.on('listenging',onListening);
 
 
 function normalizePort(val){
-    var port = parent(val,10);
+    var port = parseInt(val,10);
     if(isNaN(port)){
         return val;
     }
