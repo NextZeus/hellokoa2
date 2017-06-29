@@ -6,17 +6,14 @@ var json = require("koa-json");
 var onerror = require("koa-onerror");
 var bodyparser = require("koa-bodyparser");
 var logger = require("koa-logger");
-var mongoose = require("mongoose");
-mongoose.Promise = global.Promise;
-// 4.x版本 mongoose 支持了 promise 
-mongoose.connect('mongodb://localhost:27017/hellokoa2');
 
 var redisMiddleWare = require("./components/redis");
-
+var mongooseMiddleWare = require("./components/mongoose");
 // mongoose.set('debug', true);
 onerror(app);
 
 app.use(redisMiddleWare());
+app.use(mongooseMiddleWare());
 
 app.use(async (ctx,next)=>{
     await ctx.redis.set('test','test');
