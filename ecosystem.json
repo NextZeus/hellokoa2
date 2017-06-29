@@ -1,0 +1,21 @@
+{
+  "apps" : [{
+    "name"        : "hellokoa2",
+    "script"      : "bin/www.js",
+    "args"        : [],
+    "watch"       : true,
+    "node_args"   : "--harmony",
+    "merge_logs"  : true,
+    "cwd"         : "/Users/lixd/Documents/myProject/hellokoa",
+    "env": {
+      "NODE_ENV": "development"
+    },
+    "env_production" : {
+       "NODE_ENV": "production"
+    },
+    "env_staging" : {
+       "NODE_ENV" : "staging",
+       "TEST"     : true
+    }
+  }]
+}

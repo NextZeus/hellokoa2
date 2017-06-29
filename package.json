@@ -23,6 +23,7 @@
     "koa-views": "^6.0.2",
     "mongoose": "^4.11.0",
     "mongoose-unique-array": "^0.2.0",
-    "monk": "^5.0.2"
+    "monk": "^5.0.2",
+    "pm2": "^2.5.0"
   }
 }
