@@ -11,7 +11,6 @@ server.listen(port);
 server.on('error',onError);
 server.on('listenging',onListening);
 
-
 function normalizePort(val){
     var port = parseInt(val,10);
     if(isNaN(port)){

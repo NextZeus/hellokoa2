@@ -2,6 +2,7 @@ var mongoose = require("mongoose");
 mongoose.Promise = global.Promise;
 
 var config = require("../config/dev.json");
+mongoose.set('debug', true);
 
 // 4.x版本 mongoose 支持了 promise 
 mongoose.connect(config.mongodb.uri,config.mongodb.options);
