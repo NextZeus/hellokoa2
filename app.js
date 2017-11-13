@@ -15,15 +15,6 @@ onerror(app);
 app.use(redisMiddleWare());
 app.use(mongooseMiddleWare());
 
-app.use(async (ctx,next)=>{
-    // @ts-ignore
-    await ctx.redis.set('test','test');
-    // @ts-ignore
-    const data = await ctx.redis.get('test');
-    console.log('redis get test :',data == 'test');
-    await next();
-});
-
 app.use(bodyparser({
     enableTypes:['json','form','text']
 }));
@@ -32,9 +23,7 @@ app.use(json());
 app.use(logger());
 app.use(require("koa-static")(__dirname+'/public'));
 
-app.use(views(__dirname+'/views',{
-    extension:'{views}'
-}));
+app.use(views(__dirname, { map: {html: 'nunjucks' }}))
 
 var index = require("./routes/index");
 

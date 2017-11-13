@@ -1,11 +1,6 @@
 var router = require("koa-router")();
 var users = require("../schema/users");
 
-// express 
-router.get("/login",function(req,res){
-
-});
-
 // koa
 // ctx: request, response
 router.get('/aaa', (ctx,next) => {
@@ -23,7 +18,7 @@ router.get("/add", async (ctx,next)=>{
 
     console.log("add doc ",doc);
     ctx.body = {result:{}};
-    // 等同于express return res.send();
+    ctx.render('index.html');
 });
 
 router.get('/',async (ctx,next)=>{

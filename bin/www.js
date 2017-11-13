@@ -7,6 +7,7 @@ var http = require("http");
 var port = normalizePort(process.env.PORT || '3000');
 
 var server = http.createServer(app.callback());
+console.log('server is listening on port %s open http://localhost:%s',port,port);
 server.listen(port);
 server.on('error',onError);
 server.on('listenging',onListening);
